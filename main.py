@@ -10,6 +10,7 @@ from dotenv import load_dotenv
 
 
 load_dotenv()
+my_api = os.getenv('MYAPIKEY_2CAPTCHA')
 proxy_username = os.getenv("APIKEY_PROXY")
 url = os.getenv("AMAZON_URL")
 sw_options = {
@@ -39,7 +40,7 @@ while status:
     captcha_img = browser.find_element(By.XPATH, '/html/body/div/div[1]/div[3]/div/div/form/div[1]/div/div/div[1]/img')
     captcha_img.screenshot('captchas/Acaptcha.png')
 
-    api_key = os.getenv('APIKEY_2CAPTCHA')
+    api_key = os.getenv('APIKEY_2CAPTCHA', my_api)
 
     solver = TwoCaptcha(api_key)
 
